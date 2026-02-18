@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="mg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="kmz-base" content="../../../">
+  <title>Rejistra — KMZ | Diosezin’Antananarivo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../assets/css/style.css" />
+
+  <style>
+    body{ padding-top: 86px; }
+    .kmz-navbar{
+      position: fixed; top:0; left:0; right:0; z-index: 1040;
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(15,17,21,.10);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+
+<body data-page="recensement">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg kmz-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="../../../index.html">
+        <img class="kmz-logo" src="../../../assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+        <div>
+          <div class="kmz-brand-title">KMZ Katolika Mpitendry Zava-maneno</div>
+          <div class="kmz-brand-sub">Diosezin’Antananarivo</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kmzNav"
+        aria-controls="kmzNav" aria-expanded="false" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="kmzNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../../../index.html">
+              <i class="bi bi-house-door me-1"></i>Fandraisana
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink active" href="recensement.html" aria-current="page">
+              <i class="bi bi-people me-1"></i>Rejistra
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../apropos/apropos.html">
+              <i class="bi bi-info-circle me-1"></i>Momba
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../contact/contact.html">
+              <i class="bi bi-envelope me-1"></i>Contact
+            </a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-dark" href="#" onclick="window.close();return false;" title="Hikatona">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+      <div>
+        <div class="kmz-breadcrumb mb-2">
+          <a href="../../../index.html">Fandraisana</a>
+          <span class="mx-2">/</span>
+          <span>Rejistra</span>
+        </div>
+        <h1 class="kmz-h2 mb-2">Rejistra Mpikambana</h1>
+        <p class="text-secondary mb-0">
+          Lisitra mpikambana (mpitendry / teknisianina / mpihira): ampidiro, havaozy, jereo, fafao, ary alaina CSV.
+        </p>
+      </div>
+
+      <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-kmz-primary" id="btnAddMember" type="button">
+          <i class="bi bi-plus-lg me-2"></i>Hampiditra
+        </button>
+        <button class="btn btn-outline-dark" id="btnExportCsv" type="button">
+          <i class="bi bi-download me-2"></i>Haka CSV
+        </button>
+        <button class="btn btn-outline-secondary" id="btnRefreshMembers" type="button">
+          <i class="bi bi-arrow-clockwise me-2"></i>Hamerina
+        </button>
+      </div>
+    </div>
+
+    <div class="kmz-card p-3 p-md-4">
+      <div class="row g-2 align-items-center mb-3">
+        <div class="col-md-6">
+          <div class="kmz-search">
+            <i class="bi bi-search"></i>
+            <input type="search" id="searchInput" class="form-control" placeholder="Karohy (anarana, paroasy, asa, WhatsApp, Facebook…)" />
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-md-end gap-2 flex-wrap">
+          <select class="form-select w-auto" id="filterRole">
+            <option value="">Andraikitra rehetra</option>
+            <option>Mpitendry</option>
+            <option>Teknisianina</option>
+            <option>Mpihira</option>
+            <option>Tomponandraikitra</option>
+          </select>
+          <select class="form-select w-auto" id="filterParoisse">
+            <option value="">Paroasy rehetra</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-responsive kmz-tablewrap">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Mpikambana</th>
+              <th>Andraikitra</th>
+              <th>Asa / Fahaiza-manao</th>
+              <th>Paroasy</th>
+              <th>WhatsApp</th>
+              <th class="text-end">Hetsika</th>
+            </tr>
+          </thead>
+          <tbody id="membersTbody">
+            <tr><td colspan="6" class="text-center text-secondary py-4">Mitondra…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3">
+        <div class="text-secondary small" id="membersStatus">Mitondra…</div>
+        <div class="d-flex gap-2 align-items-center">
+          <button class="btn btn-sm btn-outline-secondary" id="btnPrev" type="button">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <span class="small text-secondary" id="pageInfo">1 / 1</span>
+          <button class="btn btn-sm btn-outline-secondary" id="btnNext" type="button">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL UNIQUE -->
+  <div class="modal fade" id="kmzModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content kmz-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="kmzModalTitle">...</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Akatona"></button>
+        </div>
+        <div class="modal-body" id="kmzModalBody">Mitondra…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="kmz-footer mt-5">
+    <div class="container">
+      <div class="row g-4 py-4">
+
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2">
+            <img class="kmz-footer-logo" src="../../../assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+            <div>
+              <div class="kmz-footer-title">KMZ Katolika Mpitendry Zava-maneno</div>
+              <div class="kmz-footer-sub">Diosezin’Antananarivo</div>
+            </div>
+          </div>
+
+          <p class="text-secondary mt-3 mb-3" style="font-weight:600;">
+            KMZ dia mikendry ny hanangona, hanofana ary handrindra ny mpanompo amin’ny mozika
+            mba hanompoana amin’ny fomba mirindra sy manara-penitra.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-kmz-primary" href="recensement.html">
+              <i class="bi bi-people-fill me-2"></i>Hiditra Rejistra
+            </a>
+            <a class="btn btn-outline-dark" href="../contact/contact.html">
+              <i class="bi bi-envelope me-2"></i>Hifandray
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Menu</div>
+          <ul class="kmz-footer-links">
+            <li><a href="../../../index.html"><i class="bi bi-house-door me-2"></i>Fandraisana</a></li>
+            <li><a href="recensement.html"><i class="bi bi-people me-2"></i>Rejistra</a></li>
+            <li><a href="../apropos/apropos.html"><i class="bi bi-info-circle me-2"></i>Momba</a></li>
+            <li><a href="../contact/contact.html"><i class="bi bi-envelope me-2"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Fifandraisana</div>
+
+          <div class="kmz-footer-contact">
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <div class="kmz-footer-k">Mailaka</div>
+                <div class="kmz-footer-v">kaless.cn@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-whatsapp"></i>
+              <div>
+                <div class="kmz-footer-k">WhatsApp</div>
+                <div class="kmz-footer-v">034 19 491 58</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-facebook"></i>
+              <div>
+                <div class="kmz-footer-k">Facebook</div>
+                <div class="kmz-footer-v">KMZ — Pejy ofisialy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kmz-footer-social mt-3">
+            <a href="https://wa.me/261341949158" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61586757852802" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="mailto:kaless.cn@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="kmz-footer-bottom py-3">
+        <div class="text-secondary small">© 2026 KMZ — Diosezin’Antananarivo</div>
+        <div class="text-secondary small">Sehatra ofisialy KMZ (Static Web)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ✅ JS page recensement -->
+  <script src="../../../assets/js/recensement.js"></script>
+</body>
+</html>

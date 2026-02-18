@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="mg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="kmz-base" content="./">
+
+  <title>KMZ — Katolika Mpitendry Zava-maneno | Diosezin’Antananarivo</title>
+  <meta name="description" content="Sehatra ofisialy KMZ Diosezin’Antananarivo: vaovao, momba, rejistra, fifandraisana." />
+  <meta name="theme-color" content="#f4c542" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Navbar fixe + hover (focus uniquement sur cette page) -->
+  <style>
+    body{ padding-top: 84px; }
+    .kmz-navbar{
+      position: fixed; top:0; left:0; right:0; z-index: 1040;
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(15,17,21,.10);
+      backdrop-filter: blur(12px);
+    }
+    .kmz-logo{
+      width: 44px; height: 44px; border-radius: 14px; object-fit: cover;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(244,197,66,.14);
+    }
+    .kmz-brand-title{ font-weight: 900; letter-spacing: -.01em; line-height: 1.1; }
+    .kmz-brand-sub{ font-size: .86rem; color: rgba(27,31,42,.65); font-weight: 800; }
+
+    .kmz-navlink{
+      position: relative;
+      font-weight: 900;
+      border-radius: 14px;
+      padding: .55rem .85rem !important;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .kmz-navlink:hover{
+      background: rgba(244,197,66,.18);
+      transform: translateY(-1px);
+    }
+    .kmz-navlink::after{
+      content:"";
+      position:absolute;
+      left: 12px; right: 12px; bottom: 7px;
+      height: 2px; border-radius: 999px;
+      background: rgba(244,197,66,.92);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .18s ease;
+      opacity: .85;
+    }
+    .kmz-navlink:hover::after{ transform: scaleX(1); }
+    .kmz-navlink.active{
+      background: rgba(244,197,66,.22);
+      box-shadow: 0 10px 30px rgba(15,17,21,.08);
+    }
+    .kmz-navlink.active::after{ transform: scaleX(1); }
+
+    .kmz-footer{
+      border-top: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+    }
+    .kmz-footer-logo{
+      width: 44px; height: 44px; border-radius: 14px; object-fit: cover;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(244,197,66,.14);
+    }
+    .kmz-footer-title{ font-weight: 900; }
+    .kmz-footer-sub{ color: rgba(27,31,42,.65); font-weight: 800; font-size: .9rem; }
+    .kmz-footer-h{
+      font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(27,31,42,.65); margin-bottom: .75rem;
+    }
+    .kmz-footer-links{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.55rem; }
+    .kmz-footer-links a{
+      text-decoration:none; color: rgba(27,31,42,.82); font-weight: 800;
+      padding: .45rem .6rem; border-radius: 14px;
+      display:inline-flex; align-items:center;
+      transition: background .15s ease, transform .15s ease;
+    }
+    .kmz-footer-links a:hover{ background: rgba(244,197,66,.18); transform: translateY(-1px); }
+
+    .kmz-footer-contact{ display:flex; flex-direction:column; gap:.7rem; }
+    .kmz-footer-contact-item{
+      display:flex; gap:12px; align-items:center;
+      padding: .75rem .8rem;
+      border-radius: 18px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.72);
+    }
+    .kmz-footer-contact-item i{
+      width: 42px; height: 42px; border-radius: 16px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(244,197,66,.18);
+    }
+    .kmz-footer-k{
+      font-size:.78rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase;
+      color: rgba(27,31,42,.58);
+    }
+    .kmz-footer-v{ font-weight:900; color: rgba(27,31,42,.86); }
+    .kmz-footer-social{ display:flex; gap:.55rem; }
+    .kmz-footer-social a{
+      width: 42px; height: 42px; border-radius: 16px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(244,197,66,.18);
+      display:inline-flex; align-items:center; justify-content:center;
+      color: rgba(27,31,42,.85);
+      transition: transform .15s ease;
+      text-decoration:none;
+    }
+    .kmz-footer-social a:hover{ transform: translateY(-2px); }
+    .kmz-footer-bottom{
+      border-top: 1px solid rgba(15,17,21,.08);
+      display:flex; justify-content: space-between;
+      gap:10px; flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body data-page="accueil">
+
+  <!-- NAVBAR (fixe) -->
+  <nav class="navbar navbar-expand-lg kmz-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+        <img class="kmz-logo" src="assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+        <div>
+          <div class="kmz-brand-title">KMZ Katolika Mpitendry Zava-maneno</div>
+          <div class="kmz-brand-sub">Diosezin’Antananarivo</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kmzNav"
+        aria-controls="kmzNav" aria-expanded="false" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="kmzNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink active" href="index.html"><i class="bi bi-house-door me-1"></i>Fandraisana</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="src/pages/recensement/recensement.html"><i class="bi bi-people me-1"></i>Rejistra</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="src/pages/apropos/apropos.html"><i class="bi bi-info-circle me-1"></i>Momba</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="src/pages/contact/contact.html"><i class="bi bi-envelope me-1"></i>Contact</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-dark" href="#" onclick="window.close();return false;" title="Hikatona">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="kmz-hero2">
+    <div class="container kmz-hero2-inner">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="kmz-hero2-badge mb-3">
+            <i class="bi bi-cross me-2"></i>
+            KMZ — Diosezin’Antananarivo
+          </div>
+
+          <h1 class="kmz-hero2-title mb-3">
+            Katolika Mpitendry Zava-maneno
+          </h1>
+
+          <p class="kmz-hero2-lead mb-4">
+            Sehatra tsotra nefa avo lenta hanangonana vaovao sy hanamorana ny rejistra ho an’ny mpitendry,
+            teknisianina ary mpanompo amin’ny mozika masina katolika.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <a class="btn btn-kmz-primary btn-lg" href="src/pages/recensement/recensement.html">
+              <i class="bi bi-people-fill me-2"></i>Hiditra Rejistra
+            </a>
+            <a class="btn btn-outline-dark btn-lg" href="src/pages/apropos/apropos.html">
+              <i class="bi bi-info-circle me-2"></i>Hijery “Momba”
+            </a>
+          </div>
+
+          <div class="kmz-hero2-stats">
+            <div class="kmz-stat">
+              <div class="kmz-stat-k">Tanjona</div>
+              <div class="kmz-stat-v">Firaisankina & fandaminana</div>
+            </div>
+            <div class="kmz-stat">
+              <div class="kmz-stat-k">Sehatra</div>
+              <div class="kmz-stat-v">Vaovao + Rejistra</div>
+            </div>
+            <div class="kmz-stat">
+              <div class="kmz-stat-k">Fomba</div>
+              <div class="kmz-stat-v">Tsotra • Classy • Responsive</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="kmz-hero2-card kmz-card glass p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="fw-semibold">
+                <i class="bi bi-star-fill me-2" style="color: var(--kmz-gold)"></i>
+                Topi-maso haingana
+              </div>
+              <span class="kmz-chip">Vatican vibe</span>
+            </div>
+
+            <div class="kmz-hero2-mini">
+              <div class="kmz-hero2-mini-item"><i class="bi bi-check2-circle me-2"></i>Vaovao sy hetsika mora vakiana</div>
+              <div class="kmz-hero2-mini-item"><i class="bi bi-check2-circle me-2"></i>Rejistra: Ajout / Modif / Fijery / Fafana</div>
+              <div class="kmz-hero2-mini-item"><i class="bi bi-check2-circle me-2"></i>Export CSV ho an’ny antontanisa</div>
+              <div class="kmz-hero2-mini-item"><i class="bi bi-check2-circle me-2"></i>Fifandraisana: Email, Facebook, WhatsApp</div>
+            </div>
+
+            <div class="kmz-hero2-cta mt-4">
+              <a class="btn btn-outline-dark w-100" href="#drafitra">
+                <i class="bi bi-compass me-2"></i>Hijery Drafitra Stratejika
+              </a>
+            </div>
+          </div>
+
+          <div class="kmz-hero2-float"></div>
+        </div>
+      </div>
+
+      <div class="kmz-hero2-strip mt-5">
+        <div class="kmz-hero2-strip-item"><i class="bi bi-music-note-beamed me-2"></i> Mozika Masina</div>
+        <div class="kmz-hero2-strip-item"><i class="bi bi-shield-check me-2"></i> Fitondrana mazava</div>
+        <div class="kmz-hero2-strip-item"><i class="bi bi-globe2 me-2"></i> Endrika manara-penitra</div>
+        <div class="kmz-hero2-strip-item"><i class="bi bi-lightning-charge me-2"></i> Haingana & stable</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-5">
+    <!-- TOP CARDS -->
+    <section class="container kmz-section-space">
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <div class="kmz-feature kmz-feature--gold p-4 h-100">
+            <div class="kmz-feature-head">
+              <div class="kmz-ic kmz-ic--gold"><i class="bi bi-journal-text"></i></div>
+              <div>
+                <div class="kmz-feature-kicker">Sata KMZ</div>
+                <div class="kmz-feature-title">Fitsipika & Fanompoana</div>
+              </div>
+            </div>
+            <p class="kmz-feature-text mb-0">
+              Ny KMZ dia miorina amin’ny fitondran-tena maha-mpikambana, fanajana ny fitsipiky ny mozika masina katolika,
+              ary fanatanterahana ny andraikitra iombonana ao amin’ny Fiangonana.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-feature kmz-feature--ink p-4 h-100">
+            <div class="kmz-feature-head">
+              <div class="kmz-ic kmz-ic--ink"><i class="bi bi-people"></i></div>
+              <div>
+                <div class="kmz-feature-kicker">Birao ankehitriny</div>
+                <div class="kmz-feature-title">Fandaminana & Firaisankina</div>
+              </div>
+            </div>
+            <p class="kmz-feature-text mb-0">
+              Ny birao ankehitriny dia mikendry ny hanamafy rafitra sy tetikasa, hanatsara ny fandaminana anatiny,
+              ary hampivondrona ny mpikambana amin’ny asa iombonana.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-feature kmz-feature--glass p-4 h-100">
+            <div class="kmz-feature-head">
+              <div class="kmz-ic kmz-ic--glass"><i class="bi bi-compass"></i></div>
+              <div>
+                <div class="kmz-feature-kicker">Tanjon’ny mandat</div>
+                <div class="kmz-feature-title">Fototra maharitra</div>
+              </div>
+            </div>
+            <p class="kmz-feature-text mb-0">
+              “Fametrahana fototra KMZ”: fanamafisana ara-panahy, fifandraisana, antontanisa mazava,
+              teknika ary fitantanana mangarahara.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRATEGY SECTION -->
+    <section class="container kmz-section-space" id="drafitra">
+      <div class="kmz-strate2">
+        <div class="kmz-strate2-bg" aria-hidden="true"></div>
+
+        <div class="kmz-strate2-top">
+          <div class="kmz-strate2-head">
+            <div class="kmz-strate2-badge">
+              <i class="bi bi-diagram-3 me-2"></i>Drafitra stratejika
+            </div>
+
+            <h2 class="kmz-strate2-title mb-2">Drafitra stratejika (famintinana)</h2>
+            <p class="kmz-strate2-sub mb-0">
+              Ireto no “andry 3” lehibe: hanamafy ny ara-panahy, hamaha olana amin’ny rafitra,
+              ary hanangana vahaolana amin’ny fiofanana sy teknolojia.
+            </p>
+          </div>
+
+          <div class="kmz-strate2-actions">
+            <a class="btn btn-outline-dark" href="src/pages/contact/contact.html">
+              <i class="bi bi-envelope me-2"></i>Hifandray
+            </a>
+            <a class="btn btn-kmz-primary" href="src/pages/recensement/recensement.html">
+              <i class="bi bi-people me-2"></i>Hiditra Rejistra
+            </a>
+          </div>
+        </div>
+
+        <div class="kmz-strate2-gallery">
+          <div class="kmz-strate2-img" style="background-image:url('assets/img/sections/strate-chorale.jpg')">
+            <div class="kmz-strate2-cap">
+              <div class="kmz-cap-k">Firaisankina</div>
+              <div class="kmz-cap-v">Fiombonana & fanompoana</div>
+            </div>
+          </div>
+
+          <div class="kmz-strate2-img" style="background-image:url('assets/img/sections/strate-instruments.jpg')">
+            <div class="kmz-strate2-cap">
+              <div class="kmz-cap-k">Teknika</div>
+              <div class="kmz-cap-v">Fahaiza-manao & kalitao</div>
+            </div>
+          </div>
+
+          <div class="kmz-strate2-img" style="background-image:url('assets/img/sections/strate-meeting.jpg')">
+            <div class="kmz-strate2-cap">
+              <div class="kmz-cap-k">Fitantanana</div>
+              <div class="kmz-cap-v">Drafitra & fanaraha-maso</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+          <div class="col-lg-4">
+            <div class="kmz-strate2-card kmz-strate2-card--gold h-100">
+              <div class="kmz-strate2-card-top">
+                <div class="kmz-num">01</div>
+                <div class="kmz-ic kmz-ic--gold"><i class="bi bi-heart-pulse"></i></div>
+              </div>
+              <div class="kmz-strate2-card-title">Fanamafisana ara-panahy</div>
+              <div class="kmz-strate2-card-sub">
+                Fandalinam-pinoana tsy tapaka, fanabeazana litorjia, ary fanajana fitsipika.
+              </div>
+              <ul class="kmz-bullets">
+                <li>Fampiraisana ny mpikambana</li>
+                <li>Fanajana ny fanompoana</li>
+                <li>Fampaherezana ara-panahy</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="kmz-strate2-card kmz-strate2-card--ink h-100">
+              <div class="kmz-strate2-card-top">
+                <div class="kmz-num">02</div>
+                <div class="kmz-ic kmz-ic--ink"><i class="bi bi-exclamation-triangle"></i></div>
+              </div>
+              <div class="kmz-strate2-card-title">Olana lehibe</div>
+              <div class="kmz-strate2-card-sub">
+                Ara-panahy, ara-pifandraisana, antontanisa tsy mazava, olana ara-teknika ary ara-bola.
+              </div>
+              <ul class="kmz-bullets">
+                <li>Fifandraisana tsy mirindra</li>
+                <li>Tsy fahampian’ny rafitra</li>
+                <li>Fitaovana sy loharano</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="kmz-strate2-card kmz-strate2-card--glass h-100">
+              <div class="kmz-strate2-card-top">
+                <div class="kmz-num">03</div>
+                <div class="kmz-ic kmz-ic--glass"><i class="bi bi-lightbulb"></i></div>
+              </div>
+              <div class="kmz-strate2-card-title">Vahaolana</div>
+              <div class="kmz-strate2-card-sub">
+                Fiofanana, fampiasana teknolojia, fanatsarana fitantanana, ary fanaraha-maso mangarahara.
+              </div>
+              <ul class="kmz-bullets">
+                <li>Fiofanana teknika / mozika</li>
+                <li>Rafitra data & rejistra</li>
+                <li>Fitantanana mazava</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="kmz-strate2-note mt-3">
+          <i class="bi bi-info-circle me-2"></i>
+          Torohevitra: Raha mpikambana ianao dia tsara raha manavao ny mombamomba anao ao amin’ny rejistra.
+        </div>
+      </div>
+    </section>
+
+    <!-- VAOVAO / HETSIKA (COMPLET + liens Facebook) -->
+    <section class="container kmz-section-space" id="actualites">
+      <div class="kmz-section-head">
+        <div>
+          <h2 class="kmz-h2">Vaovao / Hetsika</h2>
+          <p class="text-secondary mb-0">Vaovao farany sy hetsika KMZ (sary + famintinana).</p>
+        </div>
+        <a class="btn btn-sm btn-outline-secondary" href="src/pages/contact/contact.html">
+          <i class="bi bi-envelope me-1"></i>Hifandray
+        </a>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <!-- 1 -->
+        <div class="col-md-6 col-lg-3">
+          <a class="text-decoration-none" target="_blank" rel="noopener"
+             href="https://www.facebook.com/share/p/1DmswCRKMi/">
+            <div class="kmz-news-card h-100">
+              <div class="kmz-news-img"
+                   style="background-image:url('assets/img/news/actu_01.jpg');"></div>
+              <div class="kmz-news-body">
+                <div class="kmz-news-meta">
+                  <span class="kmz-news-tag"><i class="bi bi-megaphone me-1"></i>Vaovao</span>
+                  <span class="kmz-news-dot">•</span>
+                  <span class="kmz-news-date"><i class="bi bi-calendar3 me-1"></i>KMZ</span>
+                </div>
+                <div class="kmz-news-title">Fampahafantarana sy fanomanana hetsika</div>
+                <div class="kmz-news-sub text-secondary">
+                  Famintinana fohy momba ny fandaminana sy fanentanana ho an’ny mpikambana rehetra.
+                </div>
+                <div class="kmz-news-cta">
+                  Hijery amin’ny Facebook <i class="bi bi-arrow-up-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-md-6 col-lg-3">
+          <a class="text-decoration-none" target="_blank" rel="noopener"
+             href="https://www.facebook.com/share/p/1Bw5NjVEeL/">
+            <div class="kmz-news-card h-100">
+              <div class="kmz-news-img"
+                   style="background-image:url('assets/img/news/actu_02.jpg');"></div>
+              <div class="kmz-news-body">
+                <div class="kmz-news-meta">
+                  <span class="kmz-news-tag"><i class="bi bi-music-note-beamed me-1"></i>Hetsika</span>
+                  <span class="kmz-news-dot">•</span>
+                  <span class="kmz-news-date"><i class="bi bi-calendar3 me-1"></i>KMZ</span>
+                </div>
+                <div class="kmz-news-title">Fandraisana anjara amin’ny fanompoana</div>
+                <div class="kmz-news-sub text-secondary">
+                  Topi-maso momba ny fanompoana amin’ny litorjia sy ny fandraisana andraikitra.
+                </div>
+                <div class="kmz-news-cta">
+                  Hijery amin’ny Facebook <i class="bi bi-arrow-up-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-md-6 col-lg-3">
+          <a class="text-decoration-none" target="_blank" rel="noopener"
+             href="https://www.facebook.com/share/p/1H3JjXmoem/">
+            <div class="kmz-news-card h-100">
+              <div class="kmz-news-img"
+                   style="background-image:url('assets/img/news/actu_03.jpg');"></div>
+              <div class="kmz-news-body">
+                <div class="kmz-news-meta">
+                  <span class="kmz-news-tag"><i class="bi bi-people me-1"></i>Fivoriana</span>
+                  <span class="kmz-news-dot">•</span>
+                  <span class="kmz-news-date"><i class="bi bi-calendar3 me-1"></i>KMZ</span>
+                </div>
+                <div class="kmz-news-title">Fandaminana anatiny sy tetikasa</div>
+                <div class="kmz-news-sub text-secondary">
+                  Famintinana fohy: rafitra, fandrindrana, fiofanana ary fanatsarana kalitao.
+                </div>
+                <div class="kmz-news-cta">
+                  Hijery amin’ny Facebook <i class="bi bi-arrow-up-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-md-6 col-lg-3">
+          <a class="text-decoration-none" target="_blank" rel="noopener"
+             href="https://www.facebook.com/photo/?fbid=1511521087643681&set=gm.1579786920009256&idorvanity=179796733341622">
+            <div class="kmz-news-card h-100">
+              <div class="kmz-news-img"
+                   style="background-image:url('assets/img/news/actu_04.jpg');"></div>
+              <div class="kmz-news-body">
+                <div class="kmz-news-meta">
+                  <span class="kmz-news-tag"><i class="bi bi-image me-1"></i>Sary</span>
+                  <span class="kmz-news-dot">•</span>
+                  <span class="kmz-news-date"><i class="bi bi-calendar3 me-1"></i>KMZ</span>
+                </div>
+                <div class="kmz-news-title">Sary & tatitra fohy</div>
+                <div class="kmz-news-sub text-secondary">
+                  Sary manamarika ny fotoana niarahana sy ny fanompoana, miaraka amin’ny fanazavana fohy.
+                </div>
+                <div class="kmz-news-cta">
+                  Hijery amin’ny Facebook <i class="bi bi-arrow-up-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="kmz-news-bottom mt-3">
+        <div class="text-secondary small">
+          <i class="bi bi-lightning-charge me-1"></i>
+          Araho hatrany ny pejy Facebook KMZ ho an’ny vaovao sy sary farany.
+        </div>
+        <a class="btn btn-sm btn-outline-dark" target="_blank" rel="noopener"
+           href="https://www.facebook.com/profile.php?id=61586757852802">
+          <i class="bi bi-facebook me-1"></i>Pejy Facebook
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (complet) -->
+  <footer class="kmz-footer mt-5">
+    <div class="container">
+      <div class="row g-4 py-4">
+
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2">
+            <img class="kmz-footer-logo" src="assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+            <div>
+              <div class="kmz-footer-title">KMZ Katolika Mpitendry Zava-maneno</div>
+              <div class="kmz-footer-sub">Diosezin’Antananarivo</div>
+            </div>
+          </div>
+
+          <p class="text-secondary mt-3 mb-3" style="font-weight:600;">
+            KMZ dia mikendry ny hanangona, hanofana ary handrindra ny mpanompo amin’ny mozika
+            mba hanompoana amin’ny fomba mirindra sy manara-penitra.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-kmz-primary" href="src/pages/recensement/recensement.html">
+              <i class="bi bi-people-fill me-2"></i>Hiditra Rejistra
+            </a>
+            <a class="btn btn-outline-dark" href="src/pages/contact/contact.html">
+              <i class="bi bi-envelope me-2"></i>Hifandray
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Menu</div>
+          <ul class="kmz-footer-links">
+            <li><a href="index.html"><i class="bi bi-house-door me-2"></i>Fandraisana</a></li>
+            <li><a href="src/pages/recensement/recensement.html"><i class="bi bi-people me-2"></i>Rejistra</a></li>
+            <li><a href="src/pages/apropos/apropos.html"><i class="bi bi-info-circle me-2"></i>Momba</a></li>
+            <li><a href="src/pages/contact/contact.html"><i class="bi bi-envelope me-2"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Fifandraisana</div>
+
+          <div class="kmz-footer-contact">
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <div class="kmz-footer-k">Mailaka</div>
+                <div class="kmz-footer-v">kaless.cn@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-whatsapp"></i>
+              <div>
+                <div class="kmz-footer-k">WhatsApp</div>
+                <div class="kmz-footer-v">034 19 491 58</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-facebook"></i>
+              <div>
+                <div class="kmz-footer-k">Facebook</div>
+                <div class="kmz-footer-v">KMZ — Pejy ofisialy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kmz-footer-social mt-3">
+            <a href="https://wa.me/261341949158" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61586757852802" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="mailto:kaless.cn@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="kmz-footer-bottom py-3">
+        <div class="text-secondary small">© 2026 KMZ — Diosezin’Antananarivo</div>
+        <div class="text-secondary small">Sehatra ofisialy KMZ (Static Web)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

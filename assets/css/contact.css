@@ -1,0 +1,364 @@
+/* ==========================
+   CONTACT (UI/UX)
+   ========================== */
+
+.ct-hero{
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.2rem, 3.2vw, 2.3rem) 0 clamp(1.2rem, 3.8vw, 2.4rem);
+  border-bottom: 1px solid var(--kmz-line);
+}
+.ct-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(880px 540px at 10% 12%, rgba(244,197,66,.40), transparent 62%),
+    radial-gradient(980px 600px at 90% 22%, rgba(15,17,21,.08), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+  pointer-events:none;
+}
+.ct-hero::after{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  background-image: radial-gradient(rgba(15,17,21,.10) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity:.10;
+  transform: rotate(-8deg);
+  pointer-events:none;
+}
+.ct-hero-inner{ position: relative; z-index: 1; }
+
+.ct-badge{
+  display:inline-flex;
+  align-items:center;
+  padding: .55rem .85rem;
+  border-radius: 999px;
+  background: rgba(244,197,66,.18);
+  border: 1px solid rgba(244,197,66,.28);
+  font-weight: 900;
+  color: rgba(27,31,42,.86);
+}
+
+.ct-title{
+  font-family: "Playfair Display", serif;
+  letter-spacing: -.02em;
+  line-height: 1.06;
+  font-size: clamp(2.0rem, 4vw, 2.8rem);
+}
+.ct-lead{
+  color: rgba(27,31,42,.78);
+  font-weight: 600;
+  max-width: 80ch;
+}
+
+.ct-divider{
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,17,21,.12), transparent);
+}
+
+/* Quick links */
+.ct-quick{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  max-width: 580px;
+}
+.ct-quick-item{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: .95rem 1rem;
+  border-radius: 22px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 46px rgba(15,17,21,.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.ct-quick-item:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 24px 62px rgba(15,17,21,.12);
+}
+.ct-quick-ic{
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-size: 1.2rem;
+}
+.ct-quick-k{
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.58);
+}
+.ct-quick-v{
+  font-weight: 900;
+  color: rgba(27,31,42,.86);
+}
+.ct-quick-arrow{
+  margin-left: auto;
+  opacity: .65;
+}
+
+/* Hero card */
+.ct-hero-card{
+  border-radius: 26px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.76);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 22px 60px rgba(15,17,21,.12);
+  overflow:hidden;
+}
+.ct-hero-card-top{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(15,17,21,.08);
+  background:
+    radial-gradient(closest-side, rgba(244,197,66,.22), transparent 70%),
+    rgba(255,255,255,.78);
+}
+.ct-hero-card-ic{
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.75);
+  font-size: 1.2rem;
+}
+.ct-hero-card-k{
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.58);
+}
+.ct-hero-card-v{
+  font-weight: 900;
+  color: rgba(27,31,42,.86);
+}
+.ct-hero-card-body{ padding: 1rem 1.1rem 1.1rem; }
+.ct-hero-card-note{
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.72);
+  font-weight: 700;
+  color: rgba(27,31,42,.72);
+}
+
+.ct-mini{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  padding: .85rem .9rem;
+  border-radius: 22px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.72);
+}
+.ct-mini i{
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-size: 1.1rem;
+}
+.ct-mini-title{ font-weight: 900; }
+.ct-mini-sub{ color: rgba(27,31,42,.65); font-weight: 700; font-size: .9rem; }
+
+/* Content cards */
+.ct-section{
+  padding-top: clamp(1.2rem, 3vw, 2rem);
+}
+.ct-card{
+  border-radius: 28px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.80);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 22px 60px rgba(15,17,21,.10);
+  padding: 1.15rem 1.15rem 1.25rem;
+  position: relative;
+  overflow:hidden;
+}
+.ct-card::before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  background: radial-gradient(closest-side, rgba(244,197,66,.18), transparent 70%);
+  opacity:.55;
+  transform: rotate(-10deg);
+  pointer-events:none;
+}
+.ct-card > *{ position: relative; z-index: 1; }
+
+.ct-card--soft{
+  background: rgba(255,255,255,.76);
+}
+
+.ct-card-head{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+}
+.ct-card-ic{
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-size: 1.2rem;
+}
+.ct-card-kicker{
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.58);
+}
+.ct-h2{
+  font-family: "Playfair Display", serif;
+  letter-spacing: -.01em;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+.ct-input{
+  border-radius: 18px;
+  border: 1px solid rgba(15,17,21,.10);
+  padding: .8rem .9rem;
+  font-weight: 700;
+}
+.ct-input:focus{
+  box-shadow: 0 0 0 .25rem rgba(244,197,66,.25);
+  border-color: rgba(244,197,66,.55);
+}
+.ct-btn{
+  border-radius: 16px;
+  font-weight: 900;
+}
+
+/* Steps */
+.ct-steps{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ct-step{
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+  padding: .9rem 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.72);
+}
+.ct-step-num{
+  width: 34px;
+  height: 34px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-weight: 900;
+}
+.ct-step-title{ font-weight: 900; }
+.ct-step-sub{ color: rgba(27,31,42,.70); font-weight: 700; font-size: .92rem; }
+
+/* Side items */
+.ct-side{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ct-side-item{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  padding: .85rem .9rem;
+  border-radius: 22px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.72);
+}
+.ct-side-item i{
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-size: 1.1rem;
+}
+.ct-side-k{
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.58);
+}
+.ct-side-v{
+  font-weight: 900;
+  color: rgba(27,31,42,.86);
+}
+.ct-side-note{
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.72);
+  font-weight: 700;
+  color: rgba(27,31,42,.72);
+}
+
+/* Banner */
+.ct-banner{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  padding: 1rem 1.05rem;
+  border-radius: 26px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 46px rgba(15,17,21,.08);
+}
+.ct-banner-ic{
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  font-size: 1.2rem;
+}
+.ct-banner-title{ font-weight: 900; }
+.ct-banner-sub{ color: rgba(27,31,42,.70); font-weight: 700; }
+
+/* Mobile */
+@media (max-width: 991px){
+  .ct-quick{ max-width: 100%; }
+}

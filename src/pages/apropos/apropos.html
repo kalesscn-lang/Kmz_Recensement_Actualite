@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="mg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="kmz-base" content="../../../">
+  <title>Momba — KMZ</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../../assets/css/apropos.css" />
+
+  <style>
+    body{ padding-top: 86px; }
+    .kmz-navbar{
+      position: fixed; top:0; left:0; right:0; z-index: 1040;
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(15,17,21,.10);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+
+<body data-page="apropos">
+
+  <!-- NAVBAR (identique index + recensement) -->
+  <nav class="navbar navbar-expand-lg kmz-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="../../../index.html" aria-label="KMZ">
+        <img class="kmz-logo" src="../../../assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+        <div>
+          <div class="kmz-brand-title">KMZ Katolika Mpitendry Zava-maneno</div>
+          <div class="kmz-brand-sub">Diosezin’Antananarivo</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kmzNav"
+        aria-controls="kmzNav" aria-expanded="false" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="kmzNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../../../index.html">
+              <i class="bi bi-house-door me-1"></i>Fandraisana
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../recensement/recensement.html">
+              <i class="bi bi-people me-1"></i>Rejistra
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink active" href="apropos.html" aria-current="page">
+              <i class="bi bi-info-circle me-1"></i>Momba
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link kmz-navlink" href="../contact/contact.html">
+              <i class="bi bi-envelope me-1"></i>Contact
+            </a>
+          </li>
+
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-outline-dark" href="#" onclick="window.close();return false;" title="Hikatona">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="ap-hero">
+    <div class="container ap-hero-inner">
+      <div class="row align-items-center g-4">
+        <!-- LEFT -->
+        <div class="col-lg-7">
+          <div class="ap-badge">
+            <i class="bi bi-info-circle me-2"></i>
+            Momba ny KMZ — Diosezin’Antananarivo
+          </div>
+
+          <h1 class="ap-title mt-3 mb-3">Momba ny KMZ</h1>
+
+          <p class="ap-lead mb-4">
+            Tantara fohy sy famintinana ny fiainan’ny Katolika Mpitendry Zava-maneno eto amin’ny Diosezin’Antananarivo.
+            Eto koa no ahitanao ny pretra aumônier nifandimby, ary ny Masimbavy mpiaro ny mozika: Mb Cécile.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-kmz-primary btn-lg" href="../recensement/recensement.html">
+              <i class="bi bi-people-fill me-2"></i>Hiditra Rejistra
+            </a>
+            <a class="btn btn-outline-dark btn-lg" href="../contact/contact.html">
+              <i class="bi bi-envelope me-2"></i>Hifandray
+            </a>
+          </div>
+
+          <div class="ap-quick mt-4">
+            <div class="ap-quick-item">
+              <div class="ap-quick-k"><i class="bi bi-music-note-beamed me-2"></i>Fifantohana</div>
+              <div class="ap-quick-v">Mozika masina • Litorjia • Fanompoana</div>
+            </div>
+            <div class="ap-quick-item">
+              <div class="ap-quick-k"><i class="bi bi-shield-check me-2"></i>Soatoavina</div>
+              <div class="ap-quick-v">Firaisankina • Fanajana • Fahaiza-manao</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="col-lg-5">
+          <div class="ap-hero-card">
+
+            <!-- Image HERO -->
+            <div class="ap-hero-media">
+              <img
+                class="ap-hero-media-img"
+                src="../../../assets/img/news/apropos_hero.jpg"
+                alt="Sary manintona momba ny mozika masina (KMZ)"
+                onerror="this.src='../../../assets/img/news/kmz_mombamomba.png'; this.style.objectFit='cover';"
+              />
+              <div class="ap-hero-media-overlay"></div>
+
+              <!-- vignette Mb Cécile -->
+              <div class="ap-hero-media-cecile">
+                <img
+                  class="ap-hero-cecile-img"
+                  src="../../../assets/img/news/mb_cecile.png"
+                  alt="Mb Cécile"
+                />
+                <div class="ap-hero-cecile-txt">
+                  <div class="ap-hero-cecile-k">KMZ</div>
+                  <div class="ap-hero-cecile-v">Diosezy Antananarivo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ap-hero-card-body">
+              <div class="ap-chip"><i class="bi bi-star-fill me-2"></i>Topi-maso</div>
+              <div class="ap-hero-card-title mt-2">Antony iorenan’ny KMZ</div>
+              <p class="text-secondary mb-0">
+                Hanangona, hanofana, ary handrindra ireo mpanompo amin’ny mozika
+                mba hanompoana amin’ny fomba mirindra sy manara-penitra.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <div class="ap-mini">
+                <i class="bi bi-people"></i>
+                <div>
+                  <div class="ap-mini-title">Fiombonana</div>
+                  <div class="ap-mini-sub">Mifanohana & mifanaja</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="ap-mini">
+                <i class="bi bi-lightbulb"></i>
+                <div>
+                  <div class="ap-mini-title">Fanavaozana</div>
+                  <div class="ap-mini-sub">Rafitra & teknolojia</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /col-lg-5 -->
+      </div><!-- /row -->
+
+      <div class="ap-divider mt-5"></div>
+    </div>
+  </header>
+
+  <main class="pb-5">
+
+    <!-- SECTION: Tantara -->
+    <section class="container ap-section">
+      <div class="ap-section-head">
+        <div>
+          <div class="ap-section-kicker"><i class="bi bi-journal-text me-2"></i>Famintinana</div>
+          <h2 class="ap-h2 mb-2">Tantara fohy & fandaminana</h2>
+          <p class="text-secondary mb-0">
+            Ireto avy ny famintinana manan-danja momba ny fiandohan’ny KMZ sy ny fomba nandaminana.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-1 align-items-start">
+        <div class="col-lg-6">
+          <div class="ap-block">
+            <div class="ap-block-head">
+              <div class="ap-ic ap-ic--gold"><i class="bi bi-clock-history"></i></div>
+              <div>
+                <div class="ap-block-kicker">Tantara fohy</div>
+                <div class="ap-block-title">Fiandohana sy fivoarana</div>
+              </div>
+            </div>
+
+            <p class="text-secondary mb-0">
+              Nanomboka tamin’ny fiombonan’ny mpitendry sy teknisianina isaky ny paroasy/distrika/vikaria ny KMZ,
+              indrindra amin’ireo fotoan-dehibe (fetin’ny Seminera, Sakramenta Masina, fanamasinana Eveka na Pretra).
+              Tamin’ny volana Jona 1994 dia nangatahana ny fahaleovantena ho an’ny lahika mpikatroka,
+              ary ny 22 Novambra 2000 no nekena ka nomena ny anarana KMZ; Sainte Cécile no napetraka ho mpiaro.
+            </p>
+          </div>
+
+          <div class="ap-block mt-3">
+            <div class="ap-block-head">
+              <div class="ap-ic ap-ic--ink"><i class="bi bi-diagram-3"></i></div>
+              <div>
+                <div class="ap-block-kicker">Fandaminana</div>
+                <div class="ap-block-title">Filaharana Distrika (ohatra)</div>
+              </div>
+            </div>
+
+            <p class="text-secondary mb-0">
+              Nampiharina ny fandaminana amin’ny fandraisana anjara araka ny laharana distrika:
+              Andohalo, Mahamasina, Isotry, Antanimena, Faravohitra, Mangasoavina.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="ap-block ap-block--list">
+            <div class="ap-block-head">
+              <div class="ap-ic ap-ic--glass"><i class="bi bi-person-badge"></i></div>
+              <div>
+                <div class="ap-block-kicker">Fitarihana ara-panahy</div>
+                <div class="ap-block-title">Pretra Aumônier nifandimby</div>
+              </div>
+            </div>
+
+            <div class="text-secondary small mb-2">Lisitra araka ny antontan-taratasy.</div>
+
+            <ul class="ap-list text-secondary mb-0">
+              <li><span>2001–2003</span> : Père Randriamanarivo Matio Joachim</li>
+              <li><span>2004–2006</span> : Père Rakotondramanana Romule Modeste</li>
+              <li><span>2007–2020</span> : Père Ralison Eugene Raphael</li>
+              <li><span>2021–2022</span> : Père Ramaroson Georges</li>
+              <li><span>2022–2024</span> : Père Tahina Zo Elysée</li>
+              <li><span>2022–2024</span> : Père Rakotoarisoa Hery Nirina</li>
+              <li><span>2024–…</span> : Père Randrianarimanana Angelo Henri Freddy</li>
+              <li><span>2024–…</span> : Père Ramamonjisoa Herizo Elie</li>
+            </ul>
+
+            <div class="ap-note mt-3">
+              <i class="bi bi-info-circle me-2"></i>
+              Raha misy fanitsiana/ampiana amin’ny lisitra dia azonao alefa amin’ny mpitantana.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Mb Cécile -->
+    <section class="container ap-section" id="cecile">
+      <div class="ap-cecile">
+        <div class="ap-cecile-bg" aria-hidden="true"></div>
+
+        <div class="row align-items-center g-4">
+          <div class="col-lg-5">
+            <div class="ap-cecile-imgwrap">
+              <img class="ap-cecile-img"
+                   src="../../../assets/img/news/mb_cecile.png"
+                   alt="Mb Cécile — mpiaro ny mozika" />
+              <div class="ap-cecile-badge">
+                <i class="bi bi-music-note-beamed me-2"></i>Mb Cécile
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="ap-section-kicker"><i class="bi bi-heart-fill me-2"></i>Masimbavy mpiaro ny mozika</div>
+            <h2 class="ap-h2 mb-2">Mb Cécile — mpiaro ny mpihira sy ny mpitendry</h2>
+
+            <p class="text-secondary mb-3">
+              Mb Cécile dia masimbavy martiry tao Roma, fantatra amin’ny fitiavany an’Andriamanitra sy ny fahatokiany
+              na teo aza ny fahoriana. Ny lovantsofina kristianina dia milaza fa nankalaza an’Andriamanitra tao am-pony izy,
+              ka lasa mariky ny fanompoana amin’ny hira sy zavamaneno.
+            </p>
+
+            <div class="ap-grid2">
+              <div class="ap-mini2">
+                <div class="ap-mini2-ic"><i class="bi bi-praying-hands"></i></div>
+                <div>
+                  <div class="ap-mini2-title">Hira = Vavaka</div>
+                  <div class="ap-mini2-sub">Hira masina: vavaka avoaka amin’ny feo sy fo.</div>
+                </div>
+              </div>
+
+              <div class="ap-mini2">
+                <div class="ap-mini2-ic"><i class="bi bi-shield-check"></i></div>
+                <div>
+                  <div class="ap-mini2-title">Fanajana litorjia</div>
+                  <div class="ap-mini2-sub">Fahatsorana, fanajana, ary fifehezana.</div>
+                </div>
+              </div>
+
+              <div class="ap-mini2">
+                <div class="ap-mini2-ic"><i class="bi bi-people"></i></div>
+                <div>
+                  <div class="ap-mini2-title">Firaisankina</div>
+                  <div class="ap-mini2-sub">Mifanohana ny mpikambana rehetra.</div>
+                </div>
+              </div>
+
+              <div class="ap-mini2">
+                <div class="ap-mini2-ic"><i class="bi bi-stars"></i></div>
+                <div>
+                  <div class="ap-mini2-title">Kalitao</div>
+                  <div class="ap-mini2-sub">Fiofanana sy fanatsarana mitohy.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ap-cecile-cta mt-4">
+              <a class="btn btn-kmz-primary" href="../contact/contact.html">
+                <i class="bi bi-envelope me-2"></i>Hifandray amin’ny KMZ
+              </a>
+              <a class="btn btn-outline-dark" href="../recensement/recensement.html">
+                <i class="bi bi-person-check me-2"></i>Hanavao mombamomba
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VRAI CONTENU -->
+    <section class="container ap-section pt-0">
+      <div class="ap-final ap-final--full">
+        <div class="ap-final-ic"><i class="bi bi-award"></i></div>
+        <div>
+          <div class="ap-final-title">Ny anjara asan’ny KMZ (tena famintinana)</div>
+          <div class="text-secondary">
+            Ny KMZ dia mikendry ny hanamafy ny fanompoana amin’ny mozika masina amin’ny alalan’ny:
+            <b>fanofanana</b> (teknika sy litorjia), <b>fandrindrana</b> (fizarana andraikitra, filaharana),
+            <b>fandaminana ny antontan-kevitra</b> (rejistra sy vaovao), ary <b>fananganana fiombonana</b>
+            hahatonga ny hira sy ny zavamaneno ho fiderana mendrika an’Andriamanitra.
+          </div>
+
+          <div class="ap-final-grid mt-3">
+            <div class="ap-final-item">
+              <i class="bi bi-check2-circle"></i>
+              <span>Fanompoana mirindra sy manara-penitra</span>
+            </div>
+            <div class="ap-final-item">
+              <i class="bi bi-check2-circle"></i>
+              <span>Fiofanana: feo, instrument, teknisianina, litorjia</span>
+            </div>
+            <div class="ap-final-item">
+              <i class="bi bi-check2-circle"></i>
+              <span>Rejistra & fanavaozana angona ho an’ny mpikambana</span>
+            </div>
+            <div class="ap-final-item">
+              <i class="bi bi-check2-circle"></i>
+              <span>Fiombonana sy fifanohanana eo amin’ny paroasy/distrika/vikaria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (identique index + recensement) -->
+  <footer class="kmz-footer mt-5">
+    <div class="container">
+      <div class="row g-4 py-4">
+
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2">
+            <img class="kmz-footer-logo" src="../../../assets/img/news/logo_kme_dios_tana.png" alt="Logo KMZ">
+            <div>
+              <div class="kmz-footer-title">KMZ Katolika Mpitendry Zava-maneno</div>
+              <div class="kmz-footer-sub">Diosezin’Antananarivo</div>
+            </div>
+          </div>
+
+          <p class="text-secondary mt-3 mb-3" style="font-weight:600;">
+            KMZ dia mikendry ny hanangona, hanofana ary handrindra ny mpanompo amin’ny mozika
+            mba hanompoana amin’ny fomba mirindra sy manara-penitra.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-kmz-primary" href="../recensement/recensement.html">
+              <i class="bi bi-people-fill me-2"></i>Hiditra Rejistra
+            </a>
+            <a class="btn btn-outline-dark" href="../contact/contact.html">
+              <i class="bi bi-envelope me-2"></i>Hifandray
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Menu</div>
+          <ul class="kmz-footer-links">
+            <li><a href="../../../index.html"><i class="bi bi-house-door me-2"></i>Fandraisana</a></li>
+            <li><a href="../recensement/recensement.html"><i class="bi bi-people me-2"></i>Rejistra</a></li>
+            <li><a href="apropos.html"><i class="bi bi-info-circle me-2"></i>Momba</a></li>
+            <li><a href="../contact/contact.html"><i class="bi bi-envelope me-2"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="kmz-footer-h">Fifandraisana</div>
+
+          <div class="kmz-footer-contact">
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <div class="kmz-footer-k">Mailaka</div>
+                <div class="kmz-footer-v">kaless.cn@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-whatsapp"></i>
+              <div>
+                <div class="kmz-footer-k">WhatsApp</div>
+                <div class="kmz-footer-v">034 19 491 58</div>
+              </div>
+            </div>
+
+            <div class="kmz-footer-contact-item">
+              <i class="bi bi-facebook"></i>
+              <div>
+                <div class="kmz-footer-k">Facebook</div>
+                <div class="kmz-footer-v">KMZ — Pejy ofisialy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kmz-footer-social mt-3">
+            <a href="https://wa.me/261341949158" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61586757852802" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="mailto:kaless.cn@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="kmz-footer-bottom py-3">
+        <div class="text-secondary small">© 2026 KMZ — Diosezin’Antananarivo</div>
+        <div class="text-secondary small">Sehatra ofisialy KMZ (Static Web)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

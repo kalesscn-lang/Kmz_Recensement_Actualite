@@ -1,0 +1,101 @@
+<form id="memberForm" class="kmz-form">
+  <div class="row g-3">
+
+    <div class="col-md-6">
+      <label class="form-label">Anarana feno *</label>
+      <input class="form-control" name="fullName" required placeholder="Ohatra: Rakoto Jean" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Lahy/Vavy</label>
+      <select class="form-select" name="gender">
+        <option value="">—</option>
+        <option value="Lahy">Lahy</option>
+        <option value="Vavy">Vavy</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Daty nahaterahana</label>
+      <input class="form-control" type="date" name="dob" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Andraikitra *</label>
+      <select class="form-select" name="role" required>
+        <option value="" selected disabled>Safidio…</option>
+        <option>Mpitendry</option>
+        <option>Teknisianina</option>
+        <option>Mpihira</option>
+        <option>Tomponandraikitra</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Asa</label>
+      <input class="form-control" name="job" placeholder="Ohatra: Mpampianatra / Mpiasa…" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Fahaiza-manao</label>
+      <input class="form-control" name="skills" placeholder="Ohatra: Orgue, clavier, sono…" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Paroasy *</label>
+      <input class="form-control" name="paroisse" required placeholder="Ohatra: Saint Joseph" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Distrika</label>
+      <input class="form-control" name="distrika" placeholder="Ohatra: Andohalo / Mahamasina…" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Vikaria</label>
+      <input class="form-control" name="vicariat" placeholder="(raha misy)" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Finday</label>
+      <input class="form-control" name="phone" placeholder="034 xx xxx xx" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">WhatsApp</label>
+      <input class="form-control" name="whatsapp" placeholder="034 xx xxx xx" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input class="form-control" type="email" name="email" placeholder="mail@exemple.com" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Adiresy Facebook</label>
+      <input class="form-control" name="facebook" placeholder="https://facebook.com/..." />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Adiresy fonenana</label>
+      <input class="form-control" name="address" placeholder="Fokontany / Tanàna" />
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Tarika / Antoko mpihira</label>
+      <input class="form-control" name="choir" placeholder="Ohatra: Chorale Sainte-Cécile" />
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Fanamarihana</label>
+      <textarea class="form-control" rows="3" name="notes" placeholder="Fanamarihana fanampiny…"></textarea>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Ajanona</button>
+      <button type="submit" class="btn btn-kmz-primary">
+        <i class="bi bi-check2 me-2"></i>Tehirizina
+      </button>
+    </div>
+  </div>
+</form>

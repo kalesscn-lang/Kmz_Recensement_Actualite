@@ -1,0 +1,102 @@
+<form id="memberForm" class="kmz-form">
+  <input type="hidden" name="id" />
+
+  <div class="row g-3">
+
+    <div class="col-md-6">
+      <label class="form-label">Anarana feno *</label>
+      <input class="form-control" name="fullName" required />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Lahy/Vavy</label>
+      <select class="form-select" name="gender">
+        <option value="">—</option>
+        <option value="Lahy">Lahy</option>
+        <option value="Vavy">Vavy</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Daty nahaterahana</label>
+      <input class="form-control" type="date" name="dob" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Andraikitra *</label>
+      <select class="form-select" name="role" required>
+        <option>Mpitendry</option>
+        <option>Teknisianina</option>
+        <option>Mpihira</option>
+        <option>Tomponandraikitra</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Asa</label>
+      <input class="form-control" name="job" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Fahaiza-manao</label>
+      <input class="form-control" name="skills" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Paroasy *</label>
+      <input class="form-control" name="paroisse" required />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Distrika</label>
+      <input class="form-control" name="distrika" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Vikaria</label>
+      <input class="form-control" name="vicariat" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Finday</label>
+      <input class="form-control" name="phone" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">WhatsApp</label>
+      <input class="form-control" name="whatsapp" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input class="form-control" type="email" name="email" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Adiresy Facebook</label>
+      <input class="form-control" name="facebook" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Adiresy fonenana</label>
+      <input class="form-control" name="address" />
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Tarika / Antoko mpihira</label>
+      <input class="form-control" name="choir" />
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Fanamarihana</label>
+      <textarea class="form-control" rows="3" name="notes"></textarea>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Ajanona</button>
+      <button type="submit" class="btn btn-kmz-primary">
+        <i class="bi bi-save2 me-2"></i>Havaozy
+      </button>
+    </div>
+  </div>
+</form>

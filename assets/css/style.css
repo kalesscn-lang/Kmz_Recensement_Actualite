@@ -1,0 +1,889 @@
+:root{
+  --kmz-gold: #f4c542;
+  --kmz-gold-2: #ffdd7a;
+  --kmz-black: #0f1115;
+  --kmz-ink: #1b1f2a;
+  --kmz-paper: #ffffff;
+  --kmz-mist: #f6f7fb;
+  --kmz-line: rgba(15,17,21,.10);
+  --kmz-shadow: 0 18px 40px rgba(15,17,21,.10);
+  --kmz-radius: 18px;
+  --kmz-radius-2: 24px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--kmz-ink);
+  background:
+    radial-gradient(1200px 600px at 10% 0%, rgba(244,197,66,.30), transparent 60%),
+    radial-gradient(1000px 500px at 90% 10%, rgba(244,197,66,.18), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbfe 45%, #f6f7fb 100%);
+}
+
+/* Typography */
+.kmz-h2{
+  font-family: "Playfair Display", serif;
+  letter-spacing: -.01em;
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+}
+.kmz-h3{
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  margin-bottom: .5rem;
+}
+
+/* Navbar */
+.kmz-nav{
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--kmz-line);
+}
+.kmz-nav .nav-link{
+  color: rgba(27,31,42,.78);
+  font-weight: 600;
+}
+.kmz-nav .nav-link:hover{ color: rgba(27,31,42,1); }
+
+.kmz-brand{ display:flex; align-items:center; gap:10px; }
+.kmz-logo{
+  width:44px;
+  height:44px;
+  object-fit: contain;
+  border-radius:14px;
+}
+.kmz-brandstack{ display:flex; flex-direction:column; line-height:1.05; }
+.kmz-brandtitle{ font-weight: 800; font-size: 13.5px; letter-spacing: -.01em; }
+.kmz-brandsub{ font-size: 11.5px; color: rgba(27,31,42,.65); font-weight: 600; margin-top:2px; }
+.kmz-exit{ border-radius: 14px; }
+
+/* Buttons */
+.btn-kmz-primary{
+  background: linear-gradient(135deg, var(--kmz-gold), var(--kmz-gold-2));
+  color: #111;
+  border: 1px solid rgba(17,17,17,.08);
+  font-weight: 800;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(244,197,66,.25);
+}
+.btn-kmz-primary:hover{ transform: translateY(-1px); }
+.btn-kmz-primary:active{ transform: translateY(0px); }
+
+/* Cards */
+.kmz-card{
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--kmz-line);
+  border-radius: var(--kmz-radius-2);
+  box-shadow: var(--kmz-shadow);
+}
+.kmz-card.glass{
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(12px);
+}
+.kmz-chip{
+  display:inline-flex; align-items:center;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.8);
+  color: rgba(27,31,42,.75);
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+/* HERO */
+.kmz-hero2{
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--kmz-line);
+  padding: clamp(1.2rem, 3vw, 2.2rem) 0 clamp(2rem, 6vw, 3.2rem);
+}
+.kmz-hero2::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(800px 400px at 15% 0%, rgba(244,197,66,.45), transparent 62%),
+    radial-gradient(900px 520px at 85% 10%, rgba(244,197,66,.28), transparent 60%),
+    radial-gradient(700px 540px at 80% 85%, rgba(15,17,21,.08), transparent 58%),
+    linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+  pointer-events:none;
+  z-index:0;
+}
+.kmz-hero2::after{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background-image: radial-gradient(rgba(15,17,21,.10) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity:.10;
+  transform: rotate(-8deg);
+  pointer-events:none;
+  z-index:0;
+}
+.kmz-hero2-inner{ position: relative; z-index: 1; }
+
+.kmz-hero2-badge{
+  display:inline-flex; align-items:center;
+  padding: .58rem .85rem;
+  border-radius: 999px;
+  background: rgba(244,197,66,.18);
+  border: 1px solid rgba(244,197,66,.28);
+  color: rgba(27,31,42,.88);
+  font-weight: 900;
+}
+.kmz-hero2-title{
+  font-family: "Playfair Display", serif;
+  letter-spacing: -.02em;
+  line-height: 1.05;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  margin:0;
+}
+.kmz-hero2-lead{
+  color: rgba(27,31,42,.78);
+  font-size: 1.08rem;
+  max-width: 72ch;
+}
+.kmz-hero2-stats{
+  display:flex; flex-wrap: wrap; gap: .75rem;
+}
+.kmz-stat{
+  flex: 1 1 160px;
+  padding: .85rem .95rem;
+  border-radius: 18px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.65);
+  backdrop-filter: blur(8px);
+}
+.kmz-stat-k{
+  font-size: .75rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.55);
+  font-weight: 900;
+}
+.kmz-stat-v{
+  margin-top:.25rem;
+  font-weight: 800;
+  color: rgba(27,31,42,.88);
+}
+.kmz-hero2-mini{ display:flex; flex-direction:column; gap: .55rem; }
+.kmz-hero2-mini-item{ color: rgba(27,31,42,.78); font-weight: 600; }
+.kmz-hero2-float{ position: relative; height: 0; }
+.kmz-float-img{
+  position:absolute;
+  width: 180px;
+  height: 120px;
+  border-radius: 22px;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 22px 55px rgba(15,17,21,.16);
+  background-size: cover;
+  background-position: center;
+  opacity: .96;
+}
+.kmz-float-img-1{
+  right: 12px; top: -54px; transform: rotate(4deg);
+  background-image: url("https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=900&q=70");
+}
+.kmz-float-img-2{
+  right: 86px; top: 58px; transform: rotate(-5deg);
+  width: 210px; height: 140px;
+  background-image: url("https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=70");
+}
+.kmz-hero2-strip{
+  display:flex; flex-wrap: wrap; gap: .6rem;
+  padding: .85rem;
+  border-radius: 22px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.70);
+  backdrop-filter: blur(10px);
+}
+.kmz-hero2-strip-item{
+  padding: .55rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244,197,66,.28);
+  background: rgba(244,197,66,.14);
+  color: rgba(27,31,42,.82);
+  font-weight: 800;
+}
+
+.kmz-section-space{
+  padding-top: clamp(1.2rem, 3vw, 2.2rem);
+  padding-bottom: clamp(1.2rem, 3vw, 2.2rem);
+}
+
+/* Feature cards (top) */
+.kmz-feature{
+  position: relative;
+  border-radius: 26px;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 18px 46px rgba(15,17,21,.10);
+  overflow: hidden;
+}
+.kmz-feature::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(closest-side, rgba(244,197,66,.20), transparent 70%);
+  opacity: .65;
+  transform: rotate(-10deg);
+  pointer-events:none;
+}
+.kmz-feature-head{
+  position: relative;
+  z-index: 1;
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  margin-bottom: 10px;
+}
+.kmz-feature-kicker{
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.60);
+}
+.kmz-feature-title{ font-weight: 900; font-size: 1.05rem; }
+.kmz-feature-text{
+  position: relative;
+  z-index: 1;
+  color: rgba(27,31,42,.74);
+  font-weight: 600;
+  line-height: 1.55;
+}
+.kmz-feature--gold{ background: rgba(244,197,66,.14); }
+.kmz-feature--ink{ background: rgba(15,17,21,.04); }
+.kmz-feature--glass{ background: rgba(255,255,255,.72); backdrop-filter: blur(12px); }
+
+/* icon circles */
+.kmz-ic{
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 14px 30px rgba(15,17,21,.10);
+  font-size: 1.1rem;
+}
+.kmz-ic--gold{ background: rgba(244,197,66,.20); color: rgba(27,31,42,.90); }
+.kmz-ic--ink{ background: rgba(15,17,21,.06); color: rgba(27,31,42,.90); }
+.kmz-ic--glass{ background: rgba(255,255,255,.80); color: rgba(27,31,42,.92); }
+
+/* ✅ STRATEGY SECTION v2 (more spacing + UX) */
+.kmz-strate2{
+  position: relative;
+  border-radius: 30px;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 26px 70px rgba(15,17,21,.14);
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(12px);
+  padding: clamp(1.4rem, 3.2vw, 2.4rem);
+  overflow: hidden;
+}
+
+.kmz-strate2-bg{
+  position:absolute;
+  inset:-35%;
+  background:
+    radial-gradient(720px 460px at 10% 12%, rgba(244,197,66,.40), transparent 62%),
+    radial-gradient(980px 560px at 86% 26%, rgba(15,17,21,.10), transparent 60%),
+    radial-gradient(720px 480px at 55% 95%, rgba(244,197,66,.26), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,.00));
+  opacity: .88;
+  pointer-events:none;
+}
+
+.kmz-strate2 > *{ position: relative; z-index: 1; }
+
+.kmz-strate2-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.kmz-strate2-badge{
+  display:inline-flex;
+  align-items:center;
+  padding: .58rem .88rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244,197,66,.38);
+  background: rgba(244,197,66,.14);
+  font-weight: 900;
+  color: rgba(27,31,42,.86);
+}
+
+.kmz-strate2-title{
+  font-family: "Playfair Display", serif;
+  letter-spacing: -.01em;
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  margin-top: .55rem;
+}
+
+.kmz-strate2-sub{
+  color: rgba(27,31,42,.72);
+  font-weight: 600;
+  max-width: 72ch;
+}
+
+.kmz-strate2-actions{
+  display:flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.kmz-strate2-gallery{
+  display:grid;
+  grid-template-columns: 1.2fr .9fr .9fr;
+  gap: 12px;
+  margin: 1.1rem 0 1.0rem;
+}
+
+.kmz-strate2-img{
+  height: 190px;
+  border-radius: 26px;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 22px 58px rgba(15,17,21,.14);
+  background-size: cover;
+  background-position:center;
+  overflow:hidden;
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.kmz-strate2-img::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(closest-side, rgba(244,197,66,.18), transparent 68%),
+    linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.40));
+  opacity: .92;
+}
+
+.kmz-strate2-img:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 28px 72px rgba(15,17,21,.18);
+}
+
+.kmz-strate2-cap{
+  position:absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  display:flex;
+  flex-direction:column;
+  gap: 2px;
+  color: rgba(255,255,255,.96);
+}
+
+.kmz-cap-k{
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .92;
+}
+.kmz-cap-v{
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -.01em;
+}
+
+.kmz-strate2-card{
+  border-radius: 28px;
+  border: 1px solid var(--kmz-line);
+  box-shadow: 0 18px 50px rgba(15,17,21,.10);
+  padding: 18px 18px 16px;
+  background: rgba(255,255,255,.88);
+  overflow:hidden;
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.kmz-strate2-card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(closest-side, rgba(244,197,66,.22), transparent 70%);
+  transform: rotate(-10deg);
+  opacity: .55;
+  pointer-events:none;
+}
+
+.kmz-strate2-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 26px 70px rgba(15,17,21,.14);
+}
+
+.kmz-strate2-card-top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.kmz-num{
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: .06em;
+  color: rgba(27,31,42,.70);
+  background: rgba(255,255,255,.70);
+  border: 1px solid var(--kmz-line);
+  border-radius: 14px;
+  padding: .35rem .55rem;
+}
+
+.kmz-strate2-card-title{
+  position: relative;
+  z-index: 1;
+  font-weight: 900;
+  font-size: 1.10rem;
+  margin-bottom: 6px;
+}
+.kmz-strate2-card-sub{
+  position: relative;
+  z-index: 1;
+  color: rgba(27,31,42,.72);
+  font-weight: 600;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.kmz-bullets{
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(27,31,42,.70);
+  font-weight: 600;
+}
+.kmz-bullets li{ margin: 6px 0; }
+
+.kmz-strate2-card--gold{ background: rgba(244,197,66,.13); }
+.kmz-strate2-card--ink{ background: rgba(15,17,21,.04); }
+.kmz-strate2-card--glass{ background: rgba(255,255,255,.74); backdrop-filter: blur(10px); }
+
+.kmz-strate2-note{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.72);
+  color: rgba(27,31,42,.74);
+  font-weight: 700;
+}
+
+/* News */
+.kmz-section-head{
+  display:flex; align-items:end; justify-content:space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.kmz-news{ height: 100%; transition: transform .16s ease, box-shadow .16s ease; }
+.kmz-news:hover{ transform: translateY(-2px); box-shadow: 0 22px 52px rgba(15,17,21,.12); }
+.kmz-news-img{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--kmz-line);
+  margin-bottom: 12px;
+}
+
+/* Footer */
+.kmz-footer{
+  border-top: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.7);
+}
+.kmz-footer-logo{
+  width:52px;
+  height:52px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+.kmz-footer-title{ font-weight: 900; margin-bottom: 10px; }
+.kmz-footer-links{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.55rem; }
+.kmz-footer-links a{ color: rgba(27,31,42,.75); text-decoration:none; font-weight:700; }
+.kmz-footer-links a:hover{ text-decoration: underline; }
+.kmz-footer-contact a{ color: rgba(27,31,42,.80); text-decoration:none; font-weight:700; }
+.kmz-footer-contact a:hover{ text-decoration: underline; }
+.kmz-footer-hr{ border-color: rgba(15,17,21,.10); }
+.kmz-dot{ width: 8px; height: 8px; border-radius: 999px; background: var(--kmz-gold); display:inline-block; }
+
+@media (max-width: 991px){
+  .kmz-float-img{ display:none; }
+  .kmz-strate2-gallery{ grid-template-columns: 1fr; }
+  .kmz-strate2-img{ height: 210px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior:auto !important; transition:none !important; }
+}
+
+
+/* ==========================
+   NAVBAR (hover + logo stable)
+   ========================== */
+
+.kmz-navbar{
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--kmz-line);
+}
+
+.kmz-brand{ text-decoration: none; }
+.kmz-logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.12);
+}
+
+.kmz-brand-title{
+  font-weight: 900;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+.kmz-brand-sub{
+  font-size: .85rem;
+  color: rgba(27,31,42,.65);
+  font-weight: 800;
+}
+
+.kmz-navlink{
+  position: relative;
+  font-weight: 900;
+  border-radius: 14px;
+  padding: .55rem .85rem !important;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+
+.kmz-navlink:hover{
+  background: rgba(244,197,66,.18);
+  transform: translateY(-1px);
+}
+
+.kmz-navlink::after{
+  content:"";
+  position:absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 7px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(244,197,66,.85);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .18s ease;
+  opacity: .85;
+}
+
+.kmz-navlink:hover::after{ transform: scaleX(1); }
+
+.kmz-navlink.active{
+  background: rgba(244,197,66,.22);
+  box-shadow: 0 10px 30px rgba(15,17,21,.08);
+}
+.kmz-navlink.active::after{ transform: scaleX(1); }
+
+.kmz-logout{
+  border-radius: 14px;
+  padding: .55rem .75rem;
+  font-weight: 900;
+}
+
+/* ==========================
+   FOOTER (style)
+   ========================== */
+
+.kmz-footer{
+  border-top: 1px solid var(--kmz-line);
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(12px);
+}
+
+.kmz-footer-logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.12);
+}
+
+.kmz-footer-title{ font-weight: 900; }
+.kmz-footer-sub{ color: rgba(27,31,42,.65); font-weight: 800; font-size: .9rem; }
+
+.kmz-footer-h{
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.65);
+  margin-bottom: .75rem;
+}
+
+.kmz-footer-links{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.kmz-footer-links a{
+  text-decoration: none;
+  color: rgba(27,31,42,.82);
+  font-weight: 800;
+  padding: .45rem .6rem;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  transition: background .15s ease, transform .15s ease;
+}
+.kmz-footer-links a:hover{
+  background: rgba(244,197,66,.18);
+  transform: translateY(-1px);
+}
+
+.kmz-footer-contact{
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+.kmz-footer-contact-item{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: .75rem .8rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.70);
+}
+.kmz-footer-contact-item i{
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+}
+
+.kmz-footer-k{
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(27,31,42,.58);
+}
+.kmz-footer-v{ font-weight: 900; color: rgba(27,31,42,.86); }
+
+.kmz-footer-social{
+  display: flex;
+  gap: .55rem;
+}
+.kmz-footer-social a{
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(244,197,66,.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(27,31,42,.85);
+  transition: transform .15s ease;
+  text-decoration: none;
+}
+.kmz-footer-social a:hover{ transform: translateY(-2px); }
+
+.kmz-footer-bottom{
+  border-top: 1px solid rgba(15,17,21,.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ================================
+   VAOVAO / HETSIKA — images full width
+   ================================ */
+
+.kmz-news-card{
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 14px 40px rgba(15,17,21,.10);
+  transition: transform .18s ease, box-shadow .18s ease;
+  height: 100%;
+}
+
+.kmz-news-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 60px rgba(15,17,21,.14);
+}
+
+/* ✅ L'image prend toute la largeur, collée en haut */
+.kmz-news-img{
+  width: 100%;
+  height: 200px;              /* ajuste si tu veux plus grand */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;  /* ✅ alignée en haut */
+  display: block;
+}
+
+/* body de la carte */
+.kmz-news-body{
+  padding: 14px 16px 16px;
+}
+
+.kmz-news-meta{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  margin-bottom: 8px;
+}
+
+.kmz-news-tag{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: rgba(244,197,66,.18);
+  border: 1px solid rgba(15,17,21,.08);
+  font-weight: 800;
+  color: rgba(27,31,42,.85);
+}
+
+.kmz-news-dot{
+  color: rgba(27,31,42,.35);
+}
+
+.kmz-news-date{
+  color: rgba(27,31,42,.60);
+  font-weight: 700;
+}
+
+.kmz-news-title{
+  font-weight: 900;
+  letter-spacing: -.01em;
+  margin-bottom: 6px;
+  color: rgba(27,31,42,.92);
+}
+
+.kmz-news-sub{
+  font-weight: 600;
+  font-size: .92rem;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.kmz-news-cta{
+  font-weight: 900;
+  color: rgba(27,31,42,.85);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kmz-news-cta i{
+  transition: transform .15s ease;
+}
+
+.kmz-news-card:hover .kmz-news-cta i{
+  transform: translate(2px, -2px);
+}
+
+/* Responsive: image plus haute sur grands écrans */
+@media (min-width: 992px){
+  .kmz-news-img{ height: 220px; }
+}
+
+
+
+/* ================================
+   FOOTER — Fix "Fifandraisana" trop large
+   (ne touche qu'au bloc contact)
+   ================================ */
+
+/* réduit l'espacement et rend le bloc plus compact */
+.kmz-footer-contact{
+  gap: .5rem !important;
+}
+
+/* carte contact plus fine */
+.kmz-footer-contact-item{
+  padding: .55rem .65rem !important;
+  border-radius: 16px !important;
+}
+
+/* icône plus petite */
+.kmz-footer-contact-item i{
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 14px !important;
+  flex: 0 0 36px;
+  font-size: 1rem;
+}
+
+/* texte plus compact */
+.kmz-footer-k{
+  font-size: .72rem !important;
+  margin-bottom: 2px;
+}
+.kmz-footer-v{
+  font-size: .92rem !important;
+  line-height: 1.15 !important;
+  word-break: break-word;
+}
+
+/* sur grand écran: 2 colonnes dans "Fifandraisana" (moins haut, plus clean) */
+@media (min-width: 992px){
+  .kmz-footer-contact{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: .55rem !important;
+  }
+  /* le 3e item passe en pleine largeur (optionnel mais joli) */
+  .kmz-footer-contact-item:nth-child(3){
+    grid-column: 1 / -1;
+  }
+}
+
+/* sur mobile: tout reste en colonne, mais plus compact */
+@media (max-width: 575.98px){
+  .kmz-footer-contact-item{
+    padding: .5rem .6rem !important;
+  }
+  .kmz-footer-v{
+    font-size: .9rem !important;
+  }
+}
+
+/* social icons un peu plus petits pour équilibrer */
+.kmz-footer-social a{
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 14px !important;
+}
